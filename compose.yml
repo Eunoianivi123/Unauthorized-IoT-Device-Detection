@@ -1,0 +1,326 @@
+# ================================================================
+# compose.yml - N-BaIoT IoT Botnet Detection Pipeline
+#
+# USAGE
+#   Authorized benign pipeline:   docker compose --profile devices up
+#   Authorized attack pipeline:   docker compose --profile devices -e MODE=attack up
+#   Full infrastructure stack:    docker compose --profile gateway --profile identity up -d
+#   Shadow (rogue) device:        docker compose --profile shadow up
+#
+# NETWORKS
+#   iot_net            192.168.100.0/24  - authorized devices only
+#   quarantine_network 192.168.200.0/24  - isolated subnet for shadow/rogue devices
+# ================================================================
+
+name: nbaiot-pipeline
+
+networks:
+  iot_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 192.168.100.0/24
+          gateway: 192.168.100.1
+
+  quarantine_network:
+    driver: bridge
+    internal: true
+    ipam:
+      config:
+        - subnet: 192.168.200.0/24
+          gateway: 192.168.200.1
+
+services:
+
+  # ---------------------------------------------------------------
+  # Base image build only — not run directly
+  # ---------------------------------------------------------------
+  pipeline:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: nbaiot-pipeline:latest
+    environment:
+      MODE: ${MODE:-normal}
+      DEVICE_ID: ${DEVICE_ID:-1}
+      TARGET_IP: 192.168.100.3
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+    volumes:
+      - ./output:/shared
+      - ./model:/model:ro
+    restart: "no"
+    profiles: [build]
+
+  # ---------------------------------------------------------------
+  # Authorized devices with real MAC addresses (profile: devices)
+  # ---------------------------------------------------------------
+  device-1:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "1", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", BURST_SECS: "${BURST_SECS:-6}", GAP_SECS: "${GAP_SECS:-45}", START_DELAY: "${START_DELAY:-0}", PROBE: "${PROBE:-0}" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.11
+        mac_address: "54:E6:1B:A3:2F:01"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [devices]
+
+  device-2:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "2", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", BURST_SECS: "${BURST_SECS:-6}", GAP_SECS: "${GAP_SECS:-45}", START_DELAY: "${START_DELAY:-0}", PROBE: "${PROBE:-0}" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.12
+        mac_address: "44:61:32:A1:BC:02"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [devices]
+
+  device-3:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "3", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", BURST_SECS: "${BURST_SECS:-6}", GAP_SECS: "${GAP_SECS:-45}", START_DELAY: "${START_DELAY:-0}", PROBE: "${PROBE:-0}" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.13
+        mac_address: "B4:E6:2D:F7:11:03"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [devices]
+
+  device-4:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "4", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", BURST_SECS: "${BURST_SECS:-6}", GAP_SECS: "${GAP_SECS:-45}", START_DELAY: "${START_DELAY:-0}", PROBE: "${PROBE:-0}" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.14
+        mac_address: "00:17:88:4C:DA:04"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [devices]
+
+  device-5:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "5", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", BURST_SECS: "${BURST_SECS:-6}", GAP_SECS: "${GAP_SECS:-45}", START_DELAY: "${START_DELAY:-0}", PROBE: "${PROBE:-0}" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.15
+        mac_address: "00:1C:A8:9E:55:05"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [devices]
+
+  device-6:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "6", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", BURST_SECS: "${BURST_SECS:-6}", GAP_SECS: "${GAP_SECS:-45}", START_DELAY: "${START_DELAY:-0}", PROBE: "${PROBE:-0}" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.16
+        mac_address: "00:1C:A8:9E:55:06"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [devices]
+
+  device-7:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "7", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", BURST_SECS: "${BURST_SECS:-6}", GAP_SECS: "${GAP_SECS:-45}", START_DELAY: "${START_DELAY:-0}", PROBE: "${PROBE:-0}" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.17
+        mac_address: "00:12:FB:C8:44:07"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [devices]
+
+  device-8:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "8", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", BURST_SECS: "${BURST_SECS:-6}", GAP_SECS: "${GAP_SECS:-45}", START_DELAY: "${START_DELAY:-0}", PROBE: "${PROBE:-0}" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.18
+        mac_address: "A8:40:41:3D:77:08"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [devices]
+
+  device-9:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "9", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", BURST_SECS: "${BURST_SECS:-6}", GAP_SECS: "${GAP_SECS:-45}", START_DELAY: "${START_DELAY:-0}", PROBE: "${PROBE:-0}" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.19
+        mac_address: "A8:40:41:3D:77:09"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [devices]
+
+  # ---------------------------------------------------------------
+  # Shadow devices (profile: shadow — never starts with compose up)
+  # ---------------------------------------------------------------
+  shadow-device-1:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "1", TARGET_IP: "192.168.200.2" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.21
+        mac_address: "AA:BB:CC:DD:EE:01"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [shadow]
+
+  shadow-device-2:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "2", TARGET_IP: "192.168.200.2" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.22
+        mac_address: "AA:BB:CC:DD:EE:02"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [shadow]
+
+  shadow-device-3:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "3", TARGET_IP: "192.168.200.2" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.23
+        mac_address: "AA:BB:CC:DD:EE:03"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [shadow]
+
+  shadow-device-4:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "4", TARGET_IP: "192.168.200.2" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.24
+        mac_address: "AA:BB:CC:DD:EE:04"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [shadow]
+
+  shadow-device-5:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "5", TARGET_IP: "192.168.200.2" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.25
+        mac_address: "AA:BB:CC:DD:EE:05"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [shadow]
+
+  shadow-device-6:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "6", TARGET_IP: "192.168.200.2" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.26
+        mac_address: "AA:BB:CC:DD:EE:06"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [shadow]
+
+  shadow-device-7:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "7", TARGET_IP: "192.168.200.2" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.27
+        mac_address: "AA:BB:CC:DD:EE:07"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [shadow]
+
+  shadow-device-8:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "8", TARGET_IP: "192.168.200.2" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.28
+        mac_address: "AA:BB:CC:DD:EE:08"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [shadow]
+
+  shadow-device-9:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${MODE:-normal}", DEVICE_ID: "9", TARGET_IP: "192.168.200.2" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.29
+        mac_address: "AA:BB:CC:DD:EE:09"
+    volumes: ["./output:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [shadow]
+
+  # ---------------------------------------------------------------
+  # IoT network gateway — traffic sink for authorized devices
+  # ---------------------------------------------------------------
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile.gateway
+    image: nbaiot-gateway:latest
+    container_name: nbaiot-gateway
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.3
+        mac_address: "02:42:C0:A8:64:01"
+    restart: unless-stopped
+    profiles: [gateway]
+
+  # ---------------------------------------------------------------
+  # Quarantine gateway — traffic sink for shadow devices.
+  # ---------------------------------------------------------------
+  quarantine-gateway:
+    image: nbaiot-gateway:latest
+    container_name: nbaiot-quarantine-gateway
+    networks:
+      quarantine_network:
+        ipv4_address: 192.168.200.2
+        mac_address: "02:42:C0:A8:C8:01"
+    restart: unless-stopped
+    profiles: [gateway]
+
+  # ---------------------------------------------------------------
+  # Identity engine
+  # ---------------------------------------------------------------
+  identifier:
+    build:
+      context: .
+      dockerfile: Dockerfile.identifier
+    image: nbaiot-identifier:latest
+    container_name: nbaiot-identifier
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ./output:/output
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.2
+        mac_address: "02:42:C0:A8:64:02"
+      quarantine_network:
+        ipv4_address: 192.168.200.3
+    restart: unless-stopped
+    profiles: [identity]

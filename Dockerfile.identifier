@@ -1,0 +1,19 @@
+# ============================================================
+# Dockerfile.identifier — IoT Device Identity & Authorization Engine
+# ============================================================
+FROM python:3.11-slim
+
+LABEL description="N-BaIoT Identity Engine — whitelist-based MAC authorization"
+
+RUN pip install --no-cache-dir \
+        docker \
+        requests \
+        pandas \
+        numpy
+
+WORKDIR /app
+
+COPY identification_engine.py /app/identification_engine.py
+COPY whitelisted.json         /app/whitelisted.json
+
+CMD ["python3", "-u", "/app/identification_engine.py"]

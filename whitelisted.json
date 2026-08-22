@@ -1,0 +1,108 @@
+{
+  "description": "N-BaIoT Authorized Device Whitelist",
+  "version": "1.3",
+  "notes": [
+    "mac = real address  -> authorized by exact MAC match",
+    "mac = DYNAMIC       -> authorized by container name prefix (for docker compose run containers whose MAC changes every run)",
+    "mac = STATIC        -> authorized by exact container name  (for long-running services whose MAC is fixed in compose.yml)"
+  ],
+  "devices": [
+    {
+      "device_id": 1,
+      "device_name": "Danmini_Doorbell",
+      "manufacturer": "Infrastructure",
+      "mac": "54:E6:1B:A3:2F:01",
+      "ip_hint": "192.168.100.11",
+      "role": "Doorbell"
+    },
+    {
+      "device_id": 2,
+      "device_name": "Ecobee_Thermostat",
+      "manufacturer": "Infrastructure",
+      "mac": "44:61:32:A1:BC:02",
+      "ip_hint": "192.168.100.12",
+      "role": "Thermostat"
+    },
+    {
+      "device_id": 3,
+      "device_name": "Ennio_Doorbell",
+      "manufacturer": "Infrastructure",
+      "mac": "B4:E6:2D:F7:11:03",
+      "ip_hint": "192.168.100.13",
+      "role": "Doorbell"
+    },
+    {
+      "device_id": 4,
+      "device_name": "Philips_B120N10_Baby_Monitor",
+      "manufacturer": "Philips",
+      "mac": "00:17:88:4C:DA:04",
+      "ip_hint": "192.168.100.14",
+      "role": "BabyMonitor"
+    },
+    {
+      "device_id": 5,
+      "device_name": "Provision_PT_737E_Security_Camera",
+      "manufacturer": "Infrastructure",
+      "mac": "00:1C:A8:9E:55:05",
+      "ip_hint": "192.168.100.15",
+      "role": "SecurityCamera"
+    },
+    {
+      "device_id": 6,
+      "device_name": "Provision_PT_838_Security_Camera",
+      "manufacturer": "Infrastructure",
+      "mac": "00:1C:A8:9E:55:06",
+      "ip_hint": "192.168.100.16",
+      "role": "SecurityCamera"
+    },
+    {
+      "device_id": 7,
+      "device_name": "Samsung_SNH_1011_N_Webcam",
+      "manufacturer": "Samsung Electronics",
+      "mac": "00:12:FB:C8:44:07",
+      "ip_hint": "192.168.100.17",
+      "role": "Webcam"
+    },
+    {
+      "device_id": 8,
+      "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+      "manufacturer": "Infrastructure",
+      "mac": "A8:40:41:3D:77:08",
+      "ip_hint": "192.168.100.18",
+      "role": "SecurityCamera"
+    },
+    {
+      "device_id": 9,
+      "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+      "manufacturer": "Infrastructure",
+      "mac": "A8:40:41:3D:77:09",
+      "ip_hint": "192.168.100.19",
+      "role": "SecurityCamera"
+    },
+    {
+      "device_id": 10,
+      "device_name": "nbaiot-gateway",
+      "manufacturer": "Infrastructure",
+      "mac": "STATIC",
+      "ip_hint": "192.168.100.3",
+      "role": "Gateway"
+    },
+    {
+      "device_id": 11,
+      "device_name": "nbaiot-pipeline",
+      "manufacturer": "Infrastructure",
+      "mac": "DYNAMIC",
+      "ip_hint": "192.168.100.10",
+      "role": "Pipeline",
+      "note": "docker compose run assigns a new random MAC every run — authorized by name prefix instead"
+    },
+    {
+      "device_id": 12,
+      "device_name": "nbaiot-identifier",
+      "manufacturer": "Infrastructure",
+      "mac": "STATIC",
+      "ip_hint": "192.168.100.2",
+      "role": "IdentityEngine"
+    }
+  ]
+}

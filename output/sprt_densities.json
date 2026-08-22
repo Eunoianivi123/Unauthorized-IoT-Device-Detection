@@ -1,0 +1,153 @@
+{
+  "version": 1,
+  "description": "Per-device P(mse|benign) and P(mse|attacked) density models for SPRT decisioning",
+  "note": "fitted from MSE of benign (normal_r1) and attack captures using the all-in-one autoencoder",
+  "benign_suffix": "normal_r1",
+  "attack_suffix": "attack",
+  "devices": {
+    "1": {
+      "benign": {
+        "family": "lognormal",
+        "params": {
+          "mu": 1.3569476306759107,
+          "sigma": 0.8433536816359755
+        }
+      },
+      "attack": {
+        "family": "gamma",
+        "params": {
+          "k": 1.275252931759679,
+          "theta": 14.322601524102204
+        }
+      }
+    },
+    "2": {
+      "benign": {
+        "family": "lognormal",
+        "params": {
+          "mu": -2.45834723940871,
+          "sigma": 1.9634720739624234
+        }
+      },
+      "attack": {
+        "family": "gamma",
+        "params": {
+          "k": 1.261734262096671,
+          "theta": 14.799842457962722
+        }
+      }
+    },
+    "3": {
+      "benign": {
+        "family": "lognormal",
+        "params": {
+          "mu": -0.0695168917382386,
+          "sigma": 0.8950461025247771
+        }
+      },
+      "attack": {
+        "family": "gamma",
+        "params": {
+          "k": 1.2829076297632585,
+          "theta": 14.368172101098883
+        }
+      }
+    },
+    "4": {
+      "benign": {
+        "family": "lognormal",
+        "params": {
+          "mu": 2.1954123267429884,
+          "sigma": 1.0602591909671801
+        }
+      },
+      "attack": {
+        "family": "gamma",
+        "params": {
+          "k": 1.2698271270340664,
+          "theta": 14.67059626902564
+        }
+      }
+    },
+    "5": {
+      "benign": {
+        "family": "lognormal",
+        "params": {
+          "mu": 1.7819548020673388,
+          "sigma": 0.8236895700062752
+        }
+      },
+      "attack": {
+        "family": "gamma",
+        "params": {
+          "k": 1.263042038396724,
+          "theta": 14.782255298570844
+        }
+      }
+    },
+    "6": {
+      "benign": {
+        "family": "lognormal",
+        "params": {
+          "mu": 1.013281045196108,
+          "sigma": 1.2125449206268133
+        }
+      },
+      "attack": {
+        "family": "gamma",
+        "params": {
+          "k": 1.2738608063476649,
+          "theta": 14.554804103427594
+        }
+      }
+    },
+    "7": {
+      "benign": {
+        "family": "lognormal",
+        "params": {
+          "mu": 0.6125450043315085,
+          "sigma": 0.9577498357082098
+        }
+      },
+      "attack": {
+        "family": "gamma",
+        "params": {
+          "k": 1.2719733770972785,
+          "theta": 14.62227559696004
+        }
+      }
+    },
+    "8": {
+      "benign": {
+        "family": "lognormal",
+        "params": {
+          "mu": -0.5136479754604052,
+          "sigma": 0.8571978962443326
+        }
+      },
+      "attack": {
+        "family": "gamma",
+        "params": {
+          "k": 1.278043378226167,
+          "theta": 14.319303077118919
+        }
+      }
+    },
+    "9": {
+      "benign": {
+        "family": "lognormal",
+        "params": {
+          "mu": 0.44782670590769397,
+          "sigma": 0.9199677406529688
+        }
+      },
+      "attack": {
+        "family": "gamma",
+        "params": {
+          "k": 1.2863818366051565,
+          "theta": 14.260089485555058
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,176 @@
+{
+  "02:42:C0:A8:64:02": {
+    "device_id": 12,
+    "device_name": "nbaiot-identifier",
+    "role": "IdentityEngine",
+    "manufacturer": "Unknown / Virtual Device",
+    "ip": "192.168.100.2",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "02:42:C0:A8:64:01": {
+    "device_id": 10,
+    "device_name": "nbaiot-gateway",
+    "role": "Gateway",
+    "manufacturer": "Unknown / Virtual Device",
+    "ip": "192.168.100.3",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "54:E6:1B:A3:2F:01": {
+    "device_id": 1,
+    "device_name": "Danmini_Doorbell",
+    "role": "Doorbell",
+    "manufacturer": "Apple",
+    "ip": "192.168.100.11",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "AA:BB:CC:DD:EE:01": {
+    "device_id": 1,
+    "device_name": "nbaiot-pipeline-shadow-device-1-1",
+    "role": "SHADOW",
+    "manufacturer": "Unknown / Virtual Device",
+    "ip": "192.168.100.21",
+    "oui_verified": false,
+    "oui_detail": "unauthorized"
+  },
+  "44:61:32:A1:BC:02": {
+    "device_id": 2,
+    "device_name": "Ecobee_Thermostat",
+    "role": "Thermostat",
+    "manufacturer": "ecobee inc",
+    "ip": "192.168.100.12",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "B4:E6:2D:F7:11:03": {
+    "device_id": 3,
+    "device_name": "Ennio_Doorbell",
+    "role": "Doorbell",
+    "manufacturer": "Espressif Inc.",
+    "ip": "192.168.100.13",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "00:17:88:4C:DA:04": {
+    "device_id": 4,
+    "device_name": "Philips_B120N10_Baby_Monitor",
+    "role": "BabyMonitor",
+    "manufacturer": "Philips Lighting BV",
+    "ip": "192.168.100.14",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "OUI 'philips lighting bv' matches keyword 'philips'"
+  },
+  "00:1C:A8:9E:55:05": {
+    "device_id": 5,
+    "device_name": "Provision_PT_737E_Security_Camera",
+    "role": "SecurityCamera",
+    "manufacturer": "AirTies Wireless Networks",
+    "ip": "192.168.100.15",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "00:1C:A8:9E:55:06": {
+    "device_id": 6,
+    "device_name": "Provision_PT_838_Security_Camera",
+    "role": "SecurityCamera",
+    "manufacturer": "AirTies Wireless Networks",
+    "ip": "192.168.100.16",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "00:12:FB:C8:44:07": {
+    "device_id": 7,
+    "device_name": "Samsung_SNH_1011_N_Webcam",
+    "role": "Webcam",
+    "manufacturer": "Samsung Electronics Co.",
+    "ip": "192.168.100.17",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "OUI 'samsung electronics co.' matches keyword 'samsung'"
+  },
+  "A8:40:41:3D:77:08": {
+    "device_id": 8,
+    "device_name": "SimpleHome_XCS7_1002_WHT_Security_Camera",
+    "role": "SecurityCamera",
+    "manufacturer": "Dragino Technology Co.",
+    "ip": "192.168.100.18",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "62:AD:C2:51:6D:21": {
+    "device_id": 12,
+    "device_name": "nbaiot-identifier",
+    "role": "IdentityEngine",
+    "manufacturer": "Unknown / Virtual Device",
+    "ip": "192.168.100.2",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "FA:6C:19:21:F4:28": {
+    "device_id": 10,
+    "device_name": "nbaiot-gateway",
+    "role": "Gateway",
+    "manufacturer": "Unknown / Virtual Device",
+    "ip": "192.168.100.1",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "2A:74:8D:B4:5C:F3": {
+    "device_id": 12,
+    "device_name": "nbaiot-identifier",
+    "role": "IdentityEngine",
+    "manufacturer": "Unknown / Virtual Device",
+    "ip": "192.168.100.3",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "EE:96:7F:7D:AB:C7": {
+    "device_id": 10,
+    "device_name": "nbaiot-gateway",
+    "role": "Gateway",
+    "manufacturer": "Unknown / Virtual Device",
+    "ip": "192.168.100.2",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  },
+  "A8:40:41:3D:77:09": {
+    "device_id": 9,
+    "device_name": "SimpleHome_XCS7_1003_WHT_Security_Camera",
+    "role": "SecurityCamera",
+    "manufacturer": "Dragino Technology Co.",
+    "ip": "192.168.100.19",
+    "is_dynamic": false,
+    "name_prefix": null,
+    "oui_verified": true,
+    "oui_detail": "skipped (infrastructure)"
+  }
+}

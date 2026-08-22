@@ -1,0 +1,13 @@
+# ============================================================
+# Dockerfile.gateway - Lightweight sink server for IoT targets
+# ============================================================
+FROM python:3.11-slim
+
+WORKDIR /app
+
+COPY gateway_sink.py /app/gateway_sink.py
+COPY gateway.sh      /app/gateway.sh
+
+RUN chmod +x /app/gateway.sh
+
+ENTRYPOINT ["/app/gateway.sh"]

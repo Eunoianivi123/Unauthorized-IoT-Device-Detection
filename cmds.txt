@@ -1,0 +1,9 @@
+docker logs -f nbaiot-identifier
+docker compose --profile gateway --profile identity up -d
+docker compose --profile identity --profile devices --profile gateway down --remove-orphans
+docker compose --profile devices up device-8
+docker compose --profile build build --no-cache
+docker compose down
+docker compose --profile shadow run --rm -e MODE=attack shadow-device-3 
+docker compose run --rm -e MODE=attack shadow-device-1
+

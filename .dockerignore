@@ -1,0 +1,6 @@
+output
+model
+__pycache__
+*.pyc
+.git
+*.pcap
