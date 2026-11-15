@@ -11,6 +11,8 @@ Env knobs:
   BURST_SECS  duration of each attack burst in seconds   (default 2)
   GAP_SECS    benign quiet period between bursts         (default 15)
   RATE        attack packets/sec during a burst          (default 50)
+  ATTACK_LOG_PATH  optional CSV of every attack packet sent (ground truth
+                   for validating the destination-port label heuristic)
 """
 import os
 import random
@@ -38,34 +40,69 @@ DEVICE_NAME = dt.DEVICES[DEVICE_ID]
 print(f"\n[HardAttack] {DEVICE_NAME} (ID={DEVICE_ID}) -> {TARGET_IP}")
 print(f"[HardAttack] bursts {BURST_SECS}s @ {RATE} pps, gap {GAP_SECS}s\n")
 
+# Optional ground-truth log.  Writing is opt-in so normal runs are unchanged.
+ATTACK_LOG_PATH = os.environ.get("ATTACK_LOG_PATH", "").strip()
+_log_lock = threading.Lock()
+_log_fh = None
+
+
+def _log_attack(emitter, proto, src_ip, src_port, dst_port, payload_size):
+    global _log_fh
+    if not ATTACK_LOG_PATH:
+        return
+    if _log_fh is None:
+        new = not os.path.exists(ATTACK_LOG_PATH)
+        _log_fh = open(ATTACK_LOG_PATH, "a", buffering=1)
+        if new:
+            _log_fh.write("timestamp,emitter,proto,src_ip,src_port,"
+                          "dst_ip,dst_port,payload_size\n")
+    with _log_lock:
+        _log_fh.write(f"{time.time():.6f},{emitter},{proto},{src_ip},"
+                      f"{src_port},{TARGET_IP},{dst_port},{payload_size}\n")
+        _log_fh.flush()
+
 
 # ── Single-packet attack emitters (one per burst tick) ────
 def _emit_syn():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.setblocking(False)
+    port = random.randint(1, 65535)
     try:
-        s.connect_ex((TARGET_IP, random.randint(1, 65535)))
+        s.connect_ex((TARGET_IP, port))
+        src_ip, src_port = s.getsockname()[:2]
     except Exception:
-        pass
+        src_ip, src_port = "", 0
     finally:
+        _log_attack("syn", 6, src_ip, src_port, port, 0)
         s.close()
 
 
 def _emit_udp_random():
+    size = random.randint(512, 1024)
+    port = random.randint(1, 65535)
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.sendto(bytes(random.randint(512, 1024)), (TARGET_IP, random.randint(1, 65535)))
+    s.sendto(bytes(size), (TARGET_IP, port))
+    src_ip, src_port = s.getsockname()[:2]
+    _log_attack("udp_random", 17, src_ip, src_port, port, size)
     s.close()
 
 
 def _emit_udp_junk():
+    port = random.randint(1, 65535)
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.sendto(b"X" * 64, (TARGET_IP, random.randint(1, 65535)))
+    s.sendto(b"X" * 64, (TARGET_IP, port))
+    src_ip, src_port = s.getsockname()[:2]
+    _log_attack("udp_junk", 17, src_ip, src_port, port, 64)
     s.close()
 
 
 def _emit_bashlite():
+    size = random.randint(256, 768)
+    port = random.randint(1024, 9999)
     s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-    s.sendto(bytes([0xAB] * random.randint(256, 768)), (TARGET_IP, random.randint(1024, 9999)))
+    s.sendto(bytes([0xAB] * size), (TARGET_IP, port))
+    src_ip, src_port = s.getsockname()[:2]
+    _log_attack("bashlite", 17, src_ip, src_port, port, size)
     s.close()
 
 

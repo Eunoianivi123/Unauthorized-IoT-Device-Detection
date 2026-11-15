@@ -40,14 +40,16 @@ OUI_MISMATCH_BLOCK           = True   # FIX 1: quarantine on OUI/manufacturer mi
 # Every packet is a Bernoulli observation: anomalous with probability p_ben
 # under H0 (benign) or p_atk under H1 (attack). Each packet contributes a
 # log-likelihood-ratio weight and the statistic S = max(0, S + w) is accumulated;
-# an ATTACK is declared the first time S >= CUSUM_A. Calibrated on benign r1
-# captures (median + 2.5*MAD threshold): p_ben per device, design p_atk=0.3,
-# A=250 gives 100% TPR / 0% FPR and detects in ~210 packets after attack onset.
+# an ATTACK is declared the first time S >= CUSUM_A. Recalibrated 2026-09-17 with
+# the stage-1 CUSUM winner model (median + 2.5*MAD threshold on benign r1, p_ben
+# = r1 flag rate); p_atk=0.3, A=250: 9/9 attack TPR (~210 packets after onset),
+# 0/9 benign-r2 FPR, 7/9 attack_hard TPR (devices 5,7 evade), 2/9 stress false
+# alarms (devices 8,9). See output/cusum_recalibration_results.csv.
 P_ATK = 0.3
 CUSUM_A = 250.0
 DEVICE_P_BEN = {
-    1: 0.039, 2: 0.130, 3: 0.046, 4: 0.031, 5: 0.033,
-    6: 0.043, 7: 0.058, 8: 0.043, 9: 0.046,
+    1: 0.041, 2: 0.195, 3: 0.050, 4: 0.031, 5: 0.035,
+    6: 0.044, 7: 0.061, 8: 0.046, 9: 0.047,
 }
 
 # ──────────────────────────────────────────────────────────────────────────────
@@ -1208,7 +1210,7 @@ def start_identification():
     print("  N-BaIoT Identity Engine  |  Two-Tier MAC Enforcement", flush=True)
     print("=" * 55, flush=True)
     print(f"  OUI spoof detection : {'enabled' if OUI_MISMATCH_BLOCK else 'disabled'}", flush=True)
-    print(f"  Anomaly threshold   : >{ANOMALY_QUARANTINE_THRESHOLD}% → full ban", flush=True)
+    print(f"  Anomaly detection   : CUSUM (A={CUSUM_A:.0f}, p_atk={P_ATK}, per-device p_ben)", flush=True)
     print(f"  Quarantine subnet   : {QUARANTINE_SUBNET}", flush=True)
     print("=" * 55, flush=True)
     print("", flush=True)

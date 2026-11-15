@@ -64,7 +64,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.11
         mac_address: "54:E6:1B:A3:2F:01"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [devices]
 
@@ -76,7 +76,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.12
         mac_address: "44:61:32:A1:BC:02"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [devices]
 
@@ -88,7 +88,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.13
         mac_address: "B4:E6:2D:F7:11:03"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [devices]
 
@@ -100,7 +100,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.14
         mac_address: "00:17:88:4C:DA:04"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [devices]
 
@@ -112,7 +112,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.15
         mac_address: "00:1C:A8:9E:55:05"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [devices]
 
@@ -124,7 +124,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.16
         mac_address: "00:1C:A8:9E:55:06"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [devices]
 
@@ -136,7 +136,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.17
         mac_address: "00:12:FB:C8:44:07"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [devices]
 
@@ -148,7 +148,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.18
         mac_address: "A8:40:41:3D:77:08"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [devices]
 
@@ -160,7 +160,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.19
         mac_address: "A8:40:41:3D:77:09"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [devices]
 
@@ -175,7 +175,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.21
         mac_address: "AA:BB:CC:DD:EE:01"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [shadow]
 
@@ -187,7 +187,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.22
         mac_address: "AA:BB:CC:DD:EE:02"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [shadow]
 
@@ -199,7 +199,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.23
         mac_address: "AA:BB:CC:DD:EE:03"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [shadow]
 
@@ -211,7 +211,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.24
         mac_address: "AA:BB:CC:DD:EE:04"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [shadow]
 
@@ -223,7 +223,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.25
         mac_address: "AA:BB:CC:DD:EE:05"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [shadow]
 
@@ -235,7 +235,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.26
         mac_address: "AA:BB:CC:DD:EE:06"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [shadow]
 
@@ -247,7 +247,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.27
         mac_address: "AA:BB:CC:DD:EE:07"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [shadow]
 
@@ -259,7 +259,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.28
         mac_address: "AA:BB:CC:DD:EE:08"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [shadow]
 
@@ -271,7 +271,7 @@ services:
       iot_net:
         ipv4_address: 192.168.100.29
         mac_address: "AA:BB:CC:DD:EE:09"
-    volumes: ["./output:/shared", "./model:/model:ro"]
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
     restart: "no"
     profiles: [shadow]
 
@@ -315,7 +315,7 @@ services:
     container_name: nbaiot-identifier
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - ./output:/output
+      - ${OUTPUT_DIR:-./output}:/output
     networks:
       iot_net:
         ipv4_address: 192.168.100.2
@@ -324,3 +324,116 @@ services:
         ipv4_address: 192.168.200.3
     restart: unless-stopped
     profiles: [identity]
+
+  # ---------------------------------------------------------------
+  # MAC-spoofing test devices (profile: spoof — never starts with compose up)
+  # Bind a WHITELISTED MAC (identity will pass) but run attack traffic,
+  # so only the autoencoder behavioral layer can catch them.
+  # ---------------------------------------------------------------
+  spoof-device-1:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${SPOOF_MODE:-attack}", DEVICE_ID: "1", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", TRAFFIC_DURATION: "${SPOOF_DURATION:-60}", START_DELAY: "0" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.51
+        mac_address: "54:E6:1B:A3:2F:01"
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [spoof]
+
+  spoof-device-2:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${SPOOF_MODE:-attack}", DEVICE_ID: "2", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", TRAFFIC_DURATION: "${SPOOF_DURATION:-60}", START_DELAY: "0" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.52
+        mac_address: "44:61:32:A1:BC:02"
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [spoof]
+
+  spoof-device-3:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${SPOOF_MODE:-attack}", DEVICE_ID: "3", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", TRAFFIC_DURATION: "${SPOOF_DURATION:-60}", START_DELAY: "0" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.53
+        mac_address: "B4:E6:2D:F7:11:03"
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [spoof]
+
+  spoof-device-4:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${SPOOF_MODE:-attack}", DEVICE_ID: "4", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", TRAFFIC_DURATION: "${SPOOF_DURATION:-60}", START_DELAY: "0" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.54
+        mac_address: "00:17:88:4C:DA:04"
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [spoof]
+
+  spoof-device-5:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${SPOOF_MODE:-attack}", DEVICE_ID: "5", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", TRAFFIC_DURATION: "${SPOOF_DURATION:-60}", START_DELAY: "0" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.55
+        mac_address: "00:1C:A8:9E:55:05"
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [spoof]
+
+  spoof-device-6:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${SPOOF_MODE:-attack}", DEVICE_ID: "6", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", TRAFFIC_DURATION: "${SPOOF_DURATION:-60}", START_DELAY: "0" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.56
+        mac_address: "00:1C:A8:9E:55:06"
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [spoof]
+
+  spoof-device-7:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${SPOOF_MODE:-attack}", DEVICE_ID: "7", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", TRAFFIC_DURATION: "${SPOOF_DURATION:-60}", START_DELAY: "0" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.57
+        mac_address: "00:12:FB:C8:44:07"
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [spoof]
+
+  spoof-device-8:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${SPOOF_MODE:-attack}", DEVICE_ID: "8", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", TRAFFIC_DURATION: "${SPOOF_DURATION:-60}", START_DELAY: "0" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.58
+        mac_address: "A8:40:41:3D:77:08"
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [spoof]
+
+  spoof-device-9:
+    image: nbaiot-pipeline:latest
+    environment: { MODE: "${SPOOF_MODE:-attack}", DEVICE_ID: "9", TARGET_IP: "192.168.100.3", RATE: "${RATE:-120}", TRAFFIC_DURATION: "${SPOOF_DURATION:-60}", START_DELAY: "0" }
+    cap_add: [NET_ADMIN, NET_RAW]
+    networks:
+      iot_net:
+        ipv4_address: 192.168.100.59
+        mac_address: "A8:40:41:3D:77:09"
+    volumes: ["${OUTPUT_DIR:-./output}:/shared", "./model:/model:ro"]
+    restart: "no"
+    profiles: [spoof]

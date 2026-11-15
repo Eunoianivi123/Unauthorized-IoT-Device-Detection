@@ -3,7 +3,7 @@ import numpy as np
 
 rows = list(csv.DictReader(open('/work/output/device1_attack_hard_results.csv')))
 ms = np.array([float(r['mse']) for r in rows])
-anom = ms > 8.6298
+anom = ms > 8.55554
 print(f"rows={len(rows)} anom={anom.sum()} ({100*anom.mean():.1f}%)")
 
 i = 0

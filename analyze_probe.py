@@ -7,7 +7,7 @@ res_rows = list(csv.DictReader(open('/work/output/device1_attack_hard_results.cs
 n = min(len(feat_rows), len(res_rows))
 ts = np.array([float(feat_rows[i]['timestamp']) for i in range(n)])
 ms = np.array([float(res_rows[i]['mse']) for i in range(n)])
-anom = ms > 8.6298
+anom = ms > 8.55554
 
 t0 = ts[0]
 secs = (ts - t0).astype(int)
@@ -49,7 +49,7 @@ for (s, e, dur) in runs:
     print(f"  t={s:>4}s dur={dur:>2}s pkts={len(sel):>4} anom_frac={q:.2f}")
 
 # CUSUM peak for reference
-p_ben = 0.039
+p_ben = 0.041
 p_atk = 0.3
 w_a = np.log(p_atk / p_ben)
 w_n = np.log((1 - p_atk) / (1 - p_ben))

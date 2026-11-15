@@ -33,6 +33,7 @@ COPY attack_hard.py     /app/attack_hard.py
 COPY device_traffic.py  /app/device_traffic.py
 COPY device_traffic_stress.py /app/device_traffic_stress.py
 COPY pcap_csv.py        /app/pcap_csv.py
+COPY pcap_csv_fast.py   /app/pcap_csv_fast.py
 COPY testmodel.py       /app/testmodel.py
 COPY entrypoint.sh      /app/entrypoint.sh
 
